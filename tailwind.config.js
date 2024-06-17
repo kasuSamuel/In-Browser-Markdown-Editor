@@ -1,10 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
-    "./src/**/*.{html,js,ts,jsx,tsx}", // Ensure you include all necessary file types and paths
+    "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Roboto', 'sans-serif'],
+      },
+      fontWeight: {
+        'slab-bold': '700',
+      },
+      letterSpacing: {
+        'wide': '0.1em', 
+        'extralight': '200',
+      },
       height: {
         '10vh': '10vh',
         '20vh': '20vh',
