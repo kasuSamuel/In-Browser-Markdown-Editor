@@ -22,7 +22,7 @@
         <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
         <div class="flex-col w-full items-center justify-center ml-5">
           <p class="text-gray-500 tracking-wide font-light">Document Name</p>
-        <input class="w-full outline-none bg-transparent placeholder-white-100 pl-1 mt-2 text-gray-100 caret-[#E46643] border-b-2 border-transparent focus:border-white" placeholder="Untitled Document.md">
+        <input class="w-full outline-none bg-transparent placeholder-white pl-1 mt-2 text-gray-100 caret-[#E46643] border-b-2 border-transparent focus:border-white" placeholder="Untitled Document.md">
         </div>
       </div>
     </div>
@@ -37,7 +37,10 @@
 </header>
 <section class="w-full h-full flex mt-20  fixed  ">
   <div class="w-1/2 h-full">
-    <p class="bg-[#E4E4E4] px-4 w-full h-10 flex items-center uppercase tracking-wide font-light text-[#7C8187]">markdown</p>
+        <div class="bg-[#E4E4E4] px-4 w-full h-10 flex  justify-between items-center">
+          <p class="uppercase tracking-wide font-light text-[#7C8187]">markdown</p>
+          <button class="pr-7 hidden"> <img  src="../assets/icon-show-preview.svg" alt=""> </button>
+        </div>
    <textarea class="w-full h-full px-4 py-2 outline-none bg-transparent text-[#151619] text-sm resize-none  tracking-wide font-light" placeholder="Write your Markdown here..."></textarea>
   </div>
   <div class="border-r h-full border-[#979797]"></div>
@@ -48,6 +51,21 @@
         <img  src="../assets/icon-show-preview.svg" alt="">
       </button>
     </div>
-    <div class="p-4 pr-8 w-full h-full break-words bg-transparent "></div>
+    <div class="preview p-4 pr-8 w-full h-full break-words bg-transparent " [innerHTML]="previewContent"></div>
   </div>
 </section>
+<!-- 
+<nav class="w-60 h-100vh bg-black p-4 flex-col justify-center items-center">
+    <p class="uppercase mt-2 text-gray-500">my documents</p>
+<div class="flex-col mt-8 h-80vh relative">
+  <button class="flex bg-[#e7492b] w-52 h-10 text-white rounded-md py-3 px-5 justify-center items-center gap-2 hover:bg-[#F39765]">+ New Document</button>
+  <div class="flex absolute bottom-0 gap-2 items-center">
+    <img src="../assets/icon-dark-mode.svg" alt="">
+    <img class="hidden" src="../assets/icon-moon.svg" alt="">
+    <button><img src="../assets/icon-light-mode-btn.svg" alt=""></button>
+    <button class="hidden"><img src="../assets/icon-dark-mode-btn.svg" alt=""></button>
+    <img class="hidden" src="../assets/icon-light-mode.svg" alt="">
+    <img src="../assets/icon-sun.svg" alt="">
+  </div>
+</div>
+</nav> -->
