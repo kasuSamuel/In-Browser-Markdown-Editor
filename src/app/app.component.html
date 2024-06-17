@@ -41,7 +41,7 @@
           <p class="uppercase tracking-wide font-light text-[#7C8187]">markdown</p>
           <button class="pr-7 hidden"> <img  src="../assets/icon-show-preview.svg" alt=""> </button>
         </div>
-   <textarea class="w-full h-full px-4 py-2 outline-none bg-transparent text-[#151619] text-sm resize-none  tracking-wide font-light" placeholder="Write your Markdown here..."></textarea>
+   <textarea [(ngModel)]="markdown" (input)="updatePreview()" class="w-full h-full px-4 py-2 outline-none bg-transparent text-[#151619] text-sm resize-none  tracking-wide font-light" placeholder="Write your Markdown here..."></textarea>
   </div>
   <div class="border-r h-full border-[#979797]"></div>
   <div class="w-1/2 h-full">
