@@ -1,11 +1,11 @@
 <header class="bg-[#1D1F22] w-full flex justify-between items-center fixed top-0 left-0 z-50">
   <div class="flex h-20">
-    <div class="h-full flex justify-center items-center w-20 bg-[#5A6069]">
+    <div class="h-full flex justify-center items-center w-20 bg-[#5A6069] hover:bg-[#E46643]">
       <button>
         <img src="../assets/icon-menu.svg" alt="menu">
       </button>
     </div>
-    <div class="h-full  justify-center items-center w-20 bg-[#5A6069] hidden">
+    <div class="h-full  justify-center items-center w-20 bg-[#5A6069] hidden hover:bg-[#E46643]">
       <button>
         <img src="../assets/icon-close.svg" alt="menu">
       </button>
@@ -41,17 +41,20 @@
           <p class="uppercase tracking-wide font-light text-[#7C8187]">markdown</p>
           <button class="pr-7 hidden"> <img  src="../assets/icon-show-preview.svg" alt=""> </button>
         </div>
-   <textarea [(ngModel)]="markdown" (input)="updatePreview()" class="w-full h-full px-4 py-2 outline-none bg-transparent text-[#151619] text-sm resize-none  tracking-wide font-light" placeholder="Write your Markdown here..."></textarea>
+        
+   <textarea [(ngModel)]="markdown" class="w-full h-full px-4 py-2 outline-none text-[#151619] text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24" placeholder="Write your Markdown here..."></textarea>
   </div>
   <div class="border-r h-full border-[#979797]"></div>
-  <div class="w-1/2 h-full">
+  <div class="w-1/2 h-full ">
     <div class="bg-[#E4E4E4] px-4 w-full h-10 flex  justify-between items-center">
       <p class="uppercase tracking-wide font-light text-[#7C8187]">Preview</p>
       <button class="pr-7">
         <img  src="../assets/icon-show-preview.svg" alt="">
       </button>
     </div>
-    <div class="preview p-4 pr-8 w-full h-full break-words bg-transparent " [innerHTML]="previewContent"></div>
+    <div class="px-4 py-4 ">
+      <markdown class="prose text-[#7C8187] font-light" [data]="markdown"></markdown>
+    </div>
   </div>
 </section>
 <!-- 

@@ -1,20 +1,18 @@
-import { RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { marked } from 'marked';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [RouterOutlet, MarkdownModule,CommonModule,FormsModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  imports: [FormsModule]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  markdown: string = '';
-  previewContent: string = '';
+  title = 'In-Browser-Markdown-Editor';
 
-  async updatePreview() {
-    this.previewContent = await marked(this.markdown);
-  }
+  markdown = ``;
 }

@@ -8,13 +8,21 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],
+        'roboto-mono': ['"Roboto Mono"', 'monospace'],
       },
       fontWeight: {
         'slab-bold': '700',
+        'mono-regular': '400',
       },
       letterSpacing: {
         'wide': '0.1em', 
         'extralight': '200',
+      },
+            fontSize: {
+        'custom-14': '14px',
+      },
+      lineHeight: {
+        'custom-24': '24px',
       },
       height: {
         '10vh': '10vh',
@@ -30,5 +38,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+        require('@tailwindcss/typography'),
+
+  ],
 }
