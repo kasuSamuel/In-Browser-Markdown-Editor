@@ -5,14 +5,21 @@ import { RouterOutlet } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MarkdownModule,CommonModule,FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+selector: 'app-root',
+standalone: true,
+imports: [RouterOutlet, MarkdownModule,CommonModule,FormsModule],
+templateUrl: './app.component.html',
+styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'In-Browser-Markdown-Editor';
+title = 'In-Browser-Markdown-Editor';
 
-  markdown = ``;
+markdown = ``;
+
+  onTextareaInput(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+
 }

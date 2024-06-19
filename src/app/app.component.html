@@ -1,74 +1,74 @@
-<header class="bg-[#1D1F22] w-full flex justify-between items-center fixed top-0 left-0 z-50">
-  <div class="flex h-20">
-    <div class="h-full flex justify-center items-center w-20 bg-[#5A6069] hover:bg-[#E46643]">
-      <button>
-        <img src="../assets/icon-menu.svg" alt="menu">
-      </button>
-    </div>
-    <div class="h-full  justify-center items-center w-20 bg-[#5A6069] hidden hover:bg-[#E46643]">
-      <button>
-        <img src="../assets/icon-close.svg" alt="menu">
-      </button>
-    </div>
-
-    <div class="flex ml-5 w-full justify-between items-center">
-      <div class="h-20 flex items-center">
-        <img src="../assets/logo.svg" alt="logo">
+<header class="w-full fixed top-0 left-0 z-50">
+  <div class="w-full h-20 flex justify-between items-center bg-[#1D1F22]">
+<div class="flex h-full justify-between items-center" >
+      <div class="h-full flex justify-center items-center w-20 bg-[#5A6069] hover:bg-[#E46643]">
+        <button>
+          <img src="../assets/icon-menu.svg" alt="menu">
+        </button>
       </div>
-
-      <div class="border-r border-[#979797] h-10 ml-5"></div>
-
-      <div class="flex items-center ml-3 justify-between">
-        <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
-        <div class="flex-col w-full items-center justify-center ml-5">
-          <p class="text-gray-500 tracking-wide font-light">Document Name</p>
-        <input class="w-full outline-none bg-transparent placeholder-white pl-1 mt-2 text-gray-100 caret-[#E46643] border-b-2 border-transparent focus:border-white" placeholder="Untitled Document.md">
+      <div class="h-full  justify-center items-center w-20 bg-[#5A6069] hidden hover:bg-[#E46643]">
+        <button>
+          <img src="../assets/icon-close.svg" alt="menu">
+        </button>
+      </div>
+      <div class="flex ml-5 wfull justify-between items-center">
+        <div class="h-20 flex items-center">
+          <img src="../assets/logo.svg" alt="logo">
+        </div>
+      
+        <div class="border-r border-[#979797] h-10 ml-5"></div>
+      
+        <div class="flex items-center ml-3 justify-between">
+          <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
+          <div class="flex-col w-full items-center justify-center ml-5">
+            <p class="text-gray-500 tracking-wide font-light">Document Name</p>
+            <input
+              class="w-full outline-none bg-transparent placeholder-white text-2xl  pl-1 mt-2 text-gray-100 caret-[#E46643] border-b-gray-200 border-transparent focus:border-white"
+              placeholder="welcome.md">
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-    <div class="flex mr-10 w-50 justify-center items-center gap-5">
-    <button>
-      <img src="../assets/icon-delete.svg" alt="delete">
-    </button>
-      <button class="flex bg-[#e7492b] text-white rounded-md py-3 h-11 px-5 justify-center items-center gap-2 hover:bg-[#F39765] tracking-wide font-light">
-        <img src="../assets/icon-save.svg" alt="save">Save Changes</button>
-  </div>
-</header>
-<section class="w-full h-full flex mt-20  fixed  ">
-  <div class="w-1/2 h-full">
-        <div class="bg-[#E4E4E4] px-4 w-full h-10 flex  justify-between items-center">
-          <p class="uppercase tracking-wide font-light text-[#7C8187]">markdown</p>
-          <button class="pr-7 hidden"> <img  src="../assets/icon-show-preview.svg" alt=""> </button>
-        </div>
-        
-   <textarea [(ngModel)]="markdown" class="w-full h-full px-4 py-2 outline-none text-[#151619] text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24" placeholder="Write your Markdown here..."></textarea>
-  </div>
-  <div class="border-r h-full border-[#979797]"></div>
-  <div class="w-1/2 h-full ">
-    <div class="bg-[#E4E4E4] px-4 w-full h-10 flex  justify-between items-center">
-      <p class="uppercase tracking-wide font-light text-[#7C8187]">Preview</p>
-      <button class="pr-7">
-        <img  src="../assets/icon-show-preview.svg" alt="">
-      </button>
-    </div>
-    <div class="px-4 py-4 ">
-      <markdown class="prose text-[#7C8187] font-light" [data]="markdown"></markdown>
-    </div>
-  </div>
-</section>
-<!-- 
-<nav class="w-60 h-100vh bg-black p-4 flex-col justify-center items-center">
-    <p class="uppercase mt-2 text-gray-500">my documents</p>
-<div class="flex-col mt-8 h-80vh relative">
-  <button class="flex bg-[#e7492b] w-52 h-10 text-white rounded-md py-3 px-5 justify-center items-center gap-2 hover:bg-[#F39765]">+ New Document</button>
-  <div class="flex absolute bottom-0 gap-2 items-center">
-    <img src="../assets/icon-dark-mode.svg" alt="">
-    <img class="hidden" src="../assets/icon-moon.svg" alt="">
-    <button><img src="../assets/icon-light-mode-btn.svg" alt=""></button>
-    <button class="hidden"><img src="../assets/icon-dark-mode-btn.svg" alt=""></button>
-    <img class="hidden" src="../assets/icon-light-mode.svg" alt="">
-    <img src="../assets/icon-sun.svg" alt="">
-  </div>
 </div>
-</nav> -->
+        <div class="flex mr-10 w-50 justify-center items-center gap-5">
+          <button>
+            <img src="../assets/icon-delete.svg" alt="delete">
+          </button>
+          <button
+            class="flex bg-[#e7492b] text-white rounded-md py-3 h-11 px-5 justify-center items-center gap-2 hover:bg-[#F39765] tracking-wide font-light">
+            <img src="../assets/icon-save.svg" alt="save">Save Changes</button>
+        </div>
+
+
+  </div>
+
+
+  <section class="w-full h-10 flex  bg-[#E4E4E4] ">
+    <div class="w-1/2 h-full">
+      <div class="px-4 w-full h-10 flex  justify-between items-center">
+        <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">markdown</p>
+        <button class="pr-7 hidden"> <img src="../assets/icon-show-preview.svg" alt=""> </button>
+      </div>
+    </div>
+    <div class="border-r h-full border-[#979797]"></div>
+    <div class="w-1/2 h-full ">
+      <div class=" px-4 w-full h-10 flex  justify-between items-center">
+        <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">Preview</p>
+        <button class="pr-7">
+          <img src="../assets/icon-show-preview.svg" alt="">
+        </button>
+      </div>
+    </div>
+  </section>
+</header>
+<main class="w-full h-80vh flex justify-between mt-32 ">
+    <div class="w-1/2 h-full ">
+      <textarea (input)="onTextareaInput($event)" [(ngModel)]="markdown"
+        class="textarea w-full h-full  px-4 py-2 pb-40 outline-none text-[#151619] text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24"
+        placeholder="Write your Markdown here..."></textarea>
+    </div>
+    <div class="mlb border-r h-full border-[#979797] fixed"></div>
+    
+    <div class="w-1/2 h-full mkd px-4 py-4 ">
+      <markdown class=" prose text-[#7C8187] font-sans" [data]="markdown"></markdown>
+    </div>
+</main>

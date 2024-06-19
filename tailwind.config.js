@@ -7,11 +7,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Roboto', 'sans-serif'],
+        'sans': ['Roboto slab', 'sans-serif'],
         'roboto-mono': ['"Roboto Mono"', 'monospace'],
+        'roboto-light': ['Roboto Light', 'sans-serif'],
       },
       fontWeight: {
         'slab-bold': '700',
+        'slab-regular': '400',
         'mono-regular': '400',
       },
       letterSpacing: {
@@ -19,7 +21,7 @@ module.exports = {
         'extralight': '200',
       },
             fontSize: {
-        'custom-14': '14px',
+        'custom-14': '0.875rem',
       },
       lineHeight: {
         'custom-24': '24px',
