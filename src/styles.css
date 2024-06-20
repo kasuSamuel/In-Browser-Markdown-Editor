@@ -18,18 +18,24 @@ body {
   
 }
 
+.close-img{
+  display: flex;
+}
+.menu-image{
+  display: hidden;
 
+}
 .mlb{
   margin-left: 50%;
   margin-top: -2%;
 }
-        .textarea {
-            resize: none;
-            overflow: hidden;
-        }
-        .markdown-container {
-            overflow-y: auto;
-        }
+.con-move{
+  margin-left: 15rem;
+}
+.con-move-up{
+margin-top: 0;
+}
+
 .mkd blockquote{
   width: 98%;
 border-left: .3rem solid #E46643;
@@ -65,4 +71,54 @@ color: #151619;
     color: #E46643;
 
 
+}
+
+
+
+
+
+
+
+.dal {
+    width: 11rem;
+    height: 3rem;
+    display: flex;
+    position: absolute;
+}
+
+
+.button {
+    width: 3rem;
+    height: 1.5rem;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    position: relative;
+    background: #5A6069;
+    transition: 0.2s;
+
+}
+
+.button::before {
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 1.125rem;
+    background-color: #F1F3FA;
+    position: absolute;
+    top: 0.37rem;
+    right: 0.35rem;
+    transition: 0.2s;
+
+}
+
+.button::after {
+    background-color: #F1F3FA;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + .button::before {
+    transform: translateX(-1.5rem);
 }
