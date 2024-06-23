@@ -30,36 +30,30 @@ body {
 }
 
 
-
-
-.kas{
-  margin-left: 15rem;
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
 }
 
-.close-img{
-  display: flex;
-}
-.menu-image{
+.kas {
+  margin-left: 15rem; 
+ }
+
+.hidden {
   display: none;
-
-
-
-
 }
+
+
 .mlb{
   margin-left: 50%;
   margin-top: -2%;
 }
-.con-move{
-  margin-left: 15rem;
-}
+
+
 .con-move-up{
 margin-top: 0;
 }
 
-.smooth{
-  animation: pattern 1s ease-in ;
-}
 
 
 .mkd blockquote{
@@ -102,12 +96,10 @@ color: #151619;
 
 }
 
-        textarea::-webkit-scrollbar { 
+        textarea::-webkit-scrollbar, .markdown::-webkit-scrollbar { 
             display: none;
         }
-        .markdown::-webkit-scrollbar { 
-            display: none;
-        }
+
 
 
 .textarea, .preview {
@@ -173,6 +165,11 @@ input[type="checkbox"]:checked + .button::before {
 
 
 
+.preview-allall {
+  display: flex; /* Enable Flexbox layout */
+  width: 100%; 
+  justify-content: center; /* Center content horizontally */
+}
 
 
 

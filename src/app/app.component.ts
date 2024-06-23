@@ -15,58 +15,99 @@ styleUrl: './app.component.css'
 export class AppComponent {
 title = 'In-Browser-Markdown-Editor';
   markdown = ``;
-  showSidebar = false;
 
+showSidebar = false;
 
-
-toggleSidebar(): void {
+  toggleSidebar(): void {
     // Toggle the sidebar visibility
     this.showSidebar = !this.showSidebar;
 
     // Get DOM elements
-    const sidebar = document.querySelector('.sidebar') as HTMLElement | null;
-    const container = document.querySelector('.container') as HTMLElement | null;
     const header = document.querySelector('header') as HTMLElement | null;
     const mainContent = document.querySelector('main') as HTMLElement | null;
     const sidebarToggleButton = document.querySelector('.sidebar-toggle') as HTMLElement | null;
     const closeButton = document.querySelector('.clo') as HTMLElement | null;
-    const sampleElement = document.querySelector('.sam') as HTMLElement | null;
-
-    // Toggle sidebar classes
-    if (sidebar) {
-        sidebar.classList.toggle('open', this.showSidebar);
-        sidebar.classList.toggle('smooth', this.showSidebar);
-    }
+    const samElement = document.querySelector('.sam') as HTMLElement | null;
 
     // Toggle sample element class
-    if (sampleElement) {
-        sampleElement.classList.toggle('kas');
-    }
-
-    // Toggle container class
-    if (container) {
-        container.classList.toggle('con-move');
+    if (samElement) {
+      samElement.classList.toggle('kas');
     }
 
     // Set header position
     if (header) {
-        header.style.position = 'relative';
+      header.style.position = 'relative';
     }
 
     // Toggle sidebar toggle button class
     if (sidebarToggleButton) {
-        sidebarToggleButton.classList.toggle('menu-image');
+      sidebarToggleButton.classList.toggle('menu-image');
     }
 
     // Toggle close button class
     if (closeButton) {
-        closeButton.classList.toggle('close-img');
+      closeButton.classList.toggle('close-img');
     }
 
     // Toggle main content class
     if (mainContent) {
-        mainContent.classList.toggle('con-move-up', this.showSidebar);
+      mainContent.classList.toggle('con-move-up', this.showSidebar);
     }
+  }
+
+togglePreview(show: boolean): void {
+  const showPreview = document.querySelector('.show-preview') as HTMLElement | null;
+  const hidePreview = document.querySelector('.hide-preview') as HTMLElement | null;
+  const divOut = document.querySelectorAll('.div-out');
+  const previewAll = document.querySelector('.preview-all') as HTMLElement | null;
+  const previewAllTwo = document.querySelector('.preview-all-two') as HTMLElement | null;
+  const newPreview = document.querySelector('.new-preview') as HTMLElement | null;
+
+
+  // Loop through all divOut elements and toggle the 'hidden' class
+  divOut.forEach((div) => {
+    if (div instanceof HTMLElement) {
+      if (show) {
+        div.classList.add('hidden');
+      } else {
+        div.classList.remove('hidden');
+      }
+    }   
+  });
+
+if (previewAll) {
+  previewAll.style.width = show ? '100%' : ''; 
+  previewAll.style.justifyContent = show ? 'center' : 'initial'; 
 }
+if (newPreview) {
+  newPreview.style.display =  show ? 'flex' : '';
+  newPreview.style.width = show ? '100%' : ''; 
+  newPreview.style.justifyContent = show ? 'center' : 'initial'; 
+  newPreview.style.marginBottom = show ? '5rem' : ''; 
 
 }
+
+  
+  if (previewAllTwo) {
+      previewAllTwo.style.width = show ? '70%' : 'initial'; 
+      previewAllTwo.style.marginBottom = show ? '5rem' : ''; 
+
+    }
+
+
+
+
+  // Toggle 'hidden' class on showPreview and hidePreview elements
+  if (showPreview) {
+    showPreview.classList.toggle('hidden', show);
+  }
+
+  if (hidePreview) {
+    hidePreview.classList.toggle('hidden', !show);
+  }
+}
+
+
+  }
+
+

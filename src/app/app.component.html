@@ -21,17 +21,18 @@
             <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
             <div class="flex-col w-full items-center justify-center ml-5">
               <p class="text-gray-500 tracking-wide font-light">Document Name</p>
-              <input
-                class="w-full outline-none bg-transparent placeholder-white text-2xl  pl-1 mt-2 text-gray-100 caret-[#E46643] border-b-gray-200 border-transparent focus:border-white"
-                placeholder="welcome.md">
+          <input
+            class="w-full outline-none bg-transparent placeholder-white text-2xl pl-1 mt-2 text-gray-100 caret-[#E46643] focus:border-white border-b-2 border-transparent"
+            placeholder="welcome.md">
             </div>
           </div>
         </div>
       </div>
 
       <div class="flex mr-10 w-50 justify-center items-center gap-5">
-        <button>
-          <img src="../assets/icon-delete.svg" alt="delete">
+        <button >
+          <i class="fa fa-trash-alt text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
+
         </button>
         <button
           class="flex bg-[#e7492b] text-white rounded-md py-3 h-11 px-5 justify-center items-center gap-2 hover:bg-[#F39765] tracking-wide font-light">
@@ -40,33 +41,39 @@
     </div>
 
     <section class=" section-change w-full h-10 flex  bg-[#E4E4E4] ">
-      <div class="w-1/2 h-full">
+      <div class="div-out w-1/2 h-full">
         <div class="px-4 w-full h-10 flex  justify-between items-center">
           <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">markdown</p>
-          <button class="pr-7 hidden"> <img src="../assets/icon-show-preview.svg" alt=""> </button>
+          <button class=" pr-7 hidden">
+<i class="fa-light fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i></button>
         </div>
       </div>
-      <div class="border-r h-full border-[#979797]"></div>
-      <div class="w-1/2 h-full ">
+      <div class="div-out border-r h-full border-[#979797]"></div>
+      <div class="preview-all w-1/2 h-full ">
         <div class=" px-4 w-full h-10 flex  justify-between items-center">
           <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">Preview</p>
-          <button class="pr-7">
-            <img src="../assets/icon-show-preview.svg" alt="">
-          </button>
+<button  (click)="togglePreview(true)" class="show-preview pr-7" aria-label="Show Preview">
+  <i class="fa-sharp fa-regular fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
+
+</button>
+<button  (click)="togglePreview(false)" class="hide-preview pr-7 hidden " aria-label="Hide Preview">
+<i class="fa-solid fa-eye-slash text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
+</button>
+
         </div>
       </div>
     </section>
   </header>
-  <main class="w-full h-90vh fixed top-28 ">
+  <main class="w-full h-90vh fixed top-28  ">
     <div class="relative w-full h-full flex justify-between">
-      <div class="w-1/2 h-full px-4 py-4 ">
+      <div class="w-1/2 div-out h-full px-4 py-4 ">
         <textarea [(ngModel)]="markdown"
           class=" textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "
           placeholder="Write your Markdown here..."></textarea>
       </div>
-      <div class=" border-r h-full border-[#979797] "></div>
-      <div  class="markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 ">
-        <markdown  class="prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="markdown"></markdown>
+      <div class="div-out border-r h-full border-[#979797] "></div>
+      <div  class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 ">
+        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="markdown"></markdown>
       </div>
     </div>
   </main>
