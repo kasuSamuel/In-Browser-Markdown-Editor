@@ -1,9 +1,10 @@
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Component  } from '@angular/core';
+import { Component, inject  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { MenuComponent } from './menu/menu.component'; 
+import { DataService } from './data.service';
 
 @Component({
 selector: 'app-root',
@@ -14,6 +15,8 @@ styleUrl: './app.component.css'
 })
 export class AppComponent {
 title = 'In-Browser-Markdown-Editor';
+
+  darkModeService: DataService = inject(DataService);
   markdown = ``;
 
 showSidebar = false;
@@ -90,7 +93,7 @@ if (newPreview) {
   
   if (previewAllTwo) {
       previewAllTwo.style.width = show ? '70%' : 'initial'; 
-      previewAllTwo.style.marginBottom = show ? '5rem' : ''; 
+        previewAllTwo.style.marginBottom = show ? '5rem' : ''; 
 
     }
 
