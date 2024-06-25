@@ -1,5 +1,5 @@
 
-<div *ngFor="let item of data" class="sam relative w-full h-full" >
+<div  class="sam relative w-full h-full" >
   <header class="w-full fixed top-0 z-50">
     <div class="w-full h-20 flex justify-between items-center bg-[#1D1F22]">
       <div class="flex h-full justify-between items-center">
@@ -18,13 +18,13 @@
 
           <div class="border-r border-[#979797] h-10 ml-5"></div>
 
-          <div class="flex items-center ml-3 justify-between">
+          <div class="flex items-center ml-3 justify-between" >
             <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
-            <div class="flex-col w-full items-center justify-center ml-5">
+            <div class="flex-col w-full items-center justify-center ml-5"*ngIf="selectedData" >
               <p class="text-gray-500 tracking-wide font-light">Document Name</p>
           <input
             class="w-full outline-none bg-transparent placeholder-white text-2xl pl-1 mt-2 text-gray-100 caret-[#E46643] focus:border-white border-b-2 border-transparent"
-            placeholder="{{item.name}}">
+            placeholder="{{selectedData.name}}">
             </div>
           </div>
         </div>
@@ -67,13 +67,13 @@
   </header>
   <main  class="dark:bg-black w-full h-90vh fixed top-28  ">
     <div class="relative w-full h-full flex justify-between">
-      <div class="w-1/2 div-out h-full px-4 py-4 ">
-        <textarea [(ngModel)]="item.content"
+      <div class="w-1/2 div-out h-full px-4 py-4 " *ngIf="selectedData">
+        <textarea [(ngModel)]="selectedData.content"
           class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "></textarea>
       </div>
       <div class="div-out border-r h-full border-[#979797] "></div>
-      <div  class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 ">
-        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="item.content"></markdown>
+      <div  class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 " *ngIf="selectedData">
+        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="selectedData.content"></markdown>
       </div>
     </div>
   </main>

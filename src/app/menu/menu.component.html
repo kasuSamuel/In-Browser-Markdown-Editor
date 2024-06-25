@@ -10,7 +10,7 @@
   <div>
     <img src="../assets/icon-document.svg" alt="document icon">
   </div>
-  <div class="ml-4">
+  <div class="ml-4" (click)="viewDocument(item)">
     <p class="text-gray-500">{{ item.createdAt }}</p>
     <button  class="text-white hover:text-[#E46643]">{{ item.name }}</button>
   </div>

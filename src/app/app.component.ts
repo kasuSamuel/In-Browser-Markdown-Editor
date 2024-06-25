@@ -17,19 +17,24 @@ styleUrl: './app.component.css'
 export class AppComponent implements OnInit {
 
     data: any[] = [];
+    selectedData:any;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe(
-      (response) => {
-        this.data = response;
-        console.log(this.data);
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
+  this.dataService.getData().subscribe(data => {
+    this.data = data;
+  });
+
+
+
+  this.dataService.isSelected$.subscribe((doc)=>{
+    this.selectedData = doc;
+    console.log(this.selectedData);
+  });
+  if(this.data.length >0 && !this.selectedData){
+      this.lastData()
   }
+}
 title = 'In-Browser-Markdown-Editor';
 
   darkModeService: DataService = inject(DataService);
@@ -72,6 +77,10 @@ showSidebar = false;
     if (mainContent) {
       mainContent.classList.toggle('con-move-up', this.showSidebar);
     }
+  }
+  lastData(){
+    this.selectedData = this.data[this.data.length - 1];
+    console.log(this.selectedData);
   }
 
 togglePreview(show: boolean): void {

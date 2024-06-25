@@ -15,27 +15,29 @@ export class MenuComponent implements OnInit {
   data: any[] = [];
 
   isDark = false
-
+  selectedData:any;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe(
-      (response) => {
-        this.data = response;
-        console.log(this.data);
-      },
-
-    );
-
+      this.dataService.getData().subscribe(data => {
+    this.data = data;
+    
+  });
+      this.dataService.isSelected$.subscribe((doc)=>{
+    this.selectedData = doc;
+    console.log(this.selectedData);
+  });
     this.dataService.isDarkMode$.subscribe((isDark)=>{
       this.isDark = isDark
     })
 
   }
+  viewDocument(document:any){
+    this.dataService.setSelected(document);
+  }
   
   
     onThem( ){
-      
       this.dataService.toggleDarkMode()
         localStorage.setItem('isDark', this.isDark.toString());
 

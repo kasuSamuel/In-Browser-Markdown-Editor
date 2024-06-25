@@ -7,12 +7,15 @@ import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 export class DataService {
 
   private jsonUrl = 'assets/data.json';
+  storageService: any;
+
 
   constructor(private http: HttpClient) {}
 
   //  create behavior subject which is boolean
   private darkModeService = new BehaviorSubject<boolean>(false);
-  isDarkMode$ = this.darkModeService.asObservable()
+  isDarkMode$ = this.darkModeService.asObservable();
+
 
   toggleDarkMode(){
     this.darkModeService.next(!this.darkModeService.value)
@@ -20,19 +23,18 @@ export class DataService {
   }
 
 
- getData(): Observable<any> {
-    return this.http.get<any>(this.jsonUrl)
-      .pipe(
-        catchError(this.handleError<any>('getData', []))
-      );
-  }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    };
-  }
   
+getData(): Observable<any[]>{
+  return this.http.get<any>(this.jsonUrl)
+}
+
+
+private isSelected = new BehaviorSubject<any>(null);
+isSelected$ = this.isSelected.asObservable();
+
+setSelected(data:any){
+  this.isSelected.next(data);
+}
 
 }
