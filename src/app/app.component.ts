@@ -1,19 +1,35 @@
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { Component, inject  } from '@angular/core';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component, inject, OnInit  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { MenuComponent } from './menu/menu.component'; 
 import { DataService } from './data.service';
 
+
 @Component({
 selector: 'app-root',
 standalone: true,
-imports: [RouterOutlet, MarkdownModule,CommonModule,FormsModule,MenuComponent],
+imports: [RouterOutlet, MarkdownModule,CommonModule,FormsModule,MenuComponent, NgIf, NgFor],
 templateUrl: './app.component.html',
 styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    data: any[] = [];
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe(
+      (response) => {
+        this.data = response;
+        console.log(this.data);
+      },
+      (error) => {
+        console.error('Error fetching data', error);
+      }
+    );
+  }
 title = 'In-Browser-Markdown-Editor';
 
   darkModeService: DataService = inject(DataService);

@@ -1,5 +1,5 @@
 
-<div  class="sam relative w-full h-full " [ngClass]="darkModeService.darkModeSignal()">
+<div *ngFor="let item of data" class="sam relative w-full h-full" >
   <header class="w-full fixed top-0 z-50">
     <div class="w-full h-20 flex justify-between items-center bg-[#1D1F22]">
       <div class="flex h-full justify-between items-center">
@@ -24,7 +24,7 @@
               <p class="text-gray-500 tracking-wide font-light">Document Name</p>
           <input
             class="w-full outline-none bg-transparent placeholder-white text-2xl pl-1 mt-2 text-gray-100 caret-[#E46643] focus:border-white border-b-2 border-transparent"
-            placeholder="welcome.md">
+            placeholder="{{item.name}}">
             </div>
           </div>
         </div>
@@ -65,16 +65,15 @@
       </div>
     </section>
   </header>
-  <main class="dark:bg-black w-full h-90vh fixed top-28  ">
+  <main  class="dark:bg-black w-full h-90vh fixed top-28  ">
     <div class="relative w-full h-full flex justify-between">
       <div class="w-1/2 div-out h-full px-4 py-4 ">
-        <textarea [(ngModel)]="markdown"
-          class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "
-          placeholder="Write your Markdown here..."></textarea>
+        <textarea [(ngModel)]="item.content"
+          class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "></textarea>
       </div>
       <div class="div-out border-r h-full border-[#979797] "></div>
       <div  class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 ">
-        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="markdown"></markdown>
+        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="item.content"></markdown>
       </div>
     </div>
   </main>
