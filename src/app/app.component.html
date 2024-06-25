@@ -1,5 +1,4 @@
-
-<div  class="sam relative w-full h-full" >
+<div class="sam relative w-full h-full">
   <header class="w-full fixed top-0 z-50">
     <div class="w-full h-20 flex justify-between items-center bg-[#1D1F22]">
       <div class="flex h-full justify-between items-center">
@@ -16,26 +15,26 @@
             <img src="../assets/logo.svg" alt="logo">
           </div>
 
-          <div class="border-r border-[#979797] h-10 ml-5"></div>
+          <div class="border-r border-[#979797] h-10 ml-5 "></div>
 
-          <div class="flex items-center ml-3 justify-between" >
+          <div class="flex items-center ml-3 justify-between">
             <img class="w-6 h-6" src="../assets/icon-document.svg" alt="document icon">
-            <div class="flex-col w-full items-center justify-center ml-5"*ngIf="selectedData" >
+            <div class="flex-col w-full items-center justify-center ml-5" *ngIf="selectedData">
               <p class="text-gray-500 tracking-wide font-light">Document Name</p>
-          <input
-            class="w-full outline-none bg-transparent placeholder-white text-2xl pl-1 mt-2 text-gray-100 caret-[#E46643] focus:border-white border-b-2 border-transparent"
-            placeholder="{{selectedData.name}}">
+              <input
+                class="nameInput w-full outline-none bg-transparent placeholder-white text-2xl pl-1 mt-2 text-gray-100 caret-[#E46643] focus:border-white border-b-2 border-transparent"
+                placeholder="{{selectedData.name}}">
             </div>
           </div>
         </div>
       </div>
 
       <div class="flex mr-10 w-50 justify-center items-center gap-5">
-        <button >
+        <button>
           <i class="fa fa-trash-alt text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
 
         </button>
-        <button
+        <button (click)="saveChange()"
           class="flex bg-[#e7492b] text-white rounded-md py-3 h-11 px-5 justify-center items-center gap-2 hover:bg-[#F39765] tracking-wide font-light">
           <img src="../assets/icon-save.svg" alt="save">Save Changes</button>
       </div>
@@ -46,34 +45,36 @@
         <div class="px-4 w-full h-10 flex  justify-between items-center">
           <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">markdown</p>
           <button class=" pr-7 hidden">
-<i class="fa-light fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i></button>
+            <i class="fa-light fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="div-out border-r h-full border-[#979797]"></div>
       <div class="preview-all w-1/2 h-full ">
         <div class=" px-4 w-full h-10 flex  justify-between items-center">
           <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">Preview</p>
-<button  (click)="togglePreview(true)" class="show-preview pr-7" aria-label="Show Preview">
-  <i class="fa-sharp fa-regular fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
+          <button (click)="togglePreview(true)" class="show-preview pr-7" aria-label="Show Preview">
+            <i class="fa-sharp fa-regular fa-eye text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
 
-</button>
-<button  (click)="togglePreview(false)" class="hide-preview pr-7 hidden " aria-label="Hide Preview">
-<i class="fa-solid fa-eye-slash text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
-</button>
+          </button>
+          <button (click)="togglePreview(false)" class="hide-preview pr-7 hidden " aria-label="Hide Preview">
+            <i class="fa-solid fa-eye-slash text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
+          </button>
 
         </div>
       </div>
     </section>
   </header>
-  <main  class="dark:bg-black w-full h-90vh fixed top-28  ">
+  <main class="dark:bg-black w-full h-90vh fixed top-28  ">
     <div class="relative w-full h-full flex justify-between">
       <div class="w-1/2 div-out h-full px-4 py-4 " *ngIf="selectedData">
         <textarea [(ngModel)]="selectedData.content"
-          class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "></textarea>
+          class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 " placeholder="Start typing your markdown..."></textarea>
       </div>
       <div class="div-out border-r h-full border-[#979797] "></div>
-      <div  class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 " *ngIf="selectedData">
-        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap " [data]="selectedData.content"></markdown>
+      <div class=" preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-20 "
+        *ngIf="selectedData">
+        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap "
+          [data]="selectedData.content"></markdown>
       </div>
     </div>
   </main>

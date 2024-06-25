@@ -7,12 +7,12 @@ import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 export class DataService {
 
   private jsonUrl = 'assets/data.json';
-  storageService: any;
 
+  private localStorageKey = 'document';
 
   constructor(private http: HttpClient) {}
 
-  //  create behavior subject which is boolean
+  //  create behavior subject which is a boolean
   private darkModeService = new BehaviorSubject<boolean>(false);
   isDarkMode$ = this.darkModeService.asObservable();
 
@@ -23,8 +23,10 @@ export class DataService {
   }
 
 
+saveToLocalStorage(document: any[]){
+    localStorage.setItem(this.localStorageKey,JSON.stringify(document));
+}  
 
-  
 getData(): Observable<any[]>{
   return this.http.get<any>(this.jsonUrl)
 }
