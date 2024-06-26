@@ -24,6 +24,7 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit {
   data: any[] = [];
   selectedData: any;
+  showSidebar = false;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -39,12 +40,9 @@ export class AppComponent implements OnInit {
       this.lastData();
     }
   }
-  title = 'In-Browser-Markdown-Editor';
 
   darkModeService: DataService = inject(DataService);
   markdown = ``;
-
-  showSidebar = false;
 
   toggleSidebar(): void {
     // Toggle the sidebar visibility
@@ -53,7 +51,9 @@ export class AppComponent implements OnInit {
     // Get DOM elements
     const header = document.querySelector('header') as HTMLElement | null;
     const mainContent = document.querySelector('main') as HTMLElement | null;
-    const sidebarToggleButton = document.querySelector('.sidebar-toggle') as HTMLElement | null;
+    const sidebarToggleButton = document.querySelector(
+      '.sidebar-toggle',
+    ) as HTMLElement | null;
     const closeButton = document.querySelector('.clo') as HTMLElement | null;
     const samElement = document.querySelector('.sam') as HTMLElement | null;
 
@@ -87,13 +87,24 @@ export class AppComponent implements OnInit {
     console.log(this.selectedData);
   }
 
-
-  saveChange(){
-    const nameInput = document.querySelector('.nameInput') as HTMLInputElement;
-    const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
-    const data = nameInput.value;
-    const textareaValue = textarea.value;
-
+  saveChanges() {
+    console.log('hi');
+    if (this.selectedData) {
+      const nameInput = document.querySelector(
+        '.nameInput',
+      ) as HTMLInputElement;
+      const index = this.data.findIndex((doc) => doc === this.selectedData);
+      if (index !== -1) {
+        this.data[index].content = this.selectedData.content;
+        if (nameInput.value) {
+          this.data[index].name = this.selectedData.name = nameInput.value;
+        }
+        this.dataService.saveToLocalStorage(this.data);
+        console.log(this.data[index]);
+      }
+      nameInput.value = '';
+      // this.clearSelectedDocument();
+    }
   }
 
   togglePreview(show: boolean): void {
