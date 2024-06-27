@@ -1,5 +1,18 @@
 <div class="sam relative w-full h-full">
-  <header class="w-full fixed top-0 z-50">
+  <div class="deletepopup bg-black bg-opacity-60 absolute w-full h-full justify-center items-center z-50 hidden">
+    <div class="bg-white shadow-lg rounded px-4 py-8 flex-col gap-2">
+      <h2 class="w-80 text-black text-2xl font-bold font-sans">Delete this document?</h2>
+      <p class="w-80 mt-2 text-[#7C8187] font-sans">
+        Are you sure you want to delete the ‘{{selectedData.name}}’
+        document and its contents? This action cannot be reversed.
+      </p>
+      <button (click)="confirmAction()"
+        class="w-80 flex bg-[#e7492b] text-white mt-3 rounded-md py-3 h-11 px-5 justify-center  items-center hover:bg-[#F39765] tracking-wide font-light">
+        Confirm & Delete</button>
+    </div>
+  </div>
+
+  <header class="w-full fixed top-0 z-40">
     <div class="w-full h-20 flex justify-between items-center bg-[#1D1F22]">
       <div class="w- flex h-full justify-between items-center md:w-2/5 ">
         <button id="menuButton" (click)="toggleSidebar()"
@@ -30,7 +43,7 @@
       </div>
 
       <div class="flex mr-10 w-50 justify-center items-center gap-5">
-        <button>
+        <button (click)="deletedItem()">
           <i class="fa fa-trash-alt text-gray-400 hover:text-[#E46643]" aria-hidden="true"></i>
         </button>
         <button (click)="saveChanges()"
@@ -70,7 +83,7 @@
 
 
   <main class=" w-full h-90vh fixed top-28  ">
-    <div class="relative w-full h-full flex justify-between ">
+    <div class="w-full h-full flex justify-between ">
 
 
       <div class="w-full div-out h-full px-4 py-4 md:w-1/2" *ngIf="selectedData">
@@ -86,9 +99,9 @@
 
 
 
-      <div class="preview-all new-preview  markdown textarea w-1/2 h-full mkd px-4 py-4 pb-20 mb-60 hidden md:flex"
+      <div class=" preview-all new-preview markdown textarea w-1/2 mkd px-4 py-4 hidden md:flex"
         *ngIf="selectedData">
-        <markdown class="preview-all-two prose text-[#7C8187] font-sans w-full overflow-wrap "
+        <markdown class=" top-0 preview-all-two prose text-[#7C8187] font-sans w-full pb-20 overflow-wrap "
           [data]="selectedData.content"></markdown>
       </div>
     </div>

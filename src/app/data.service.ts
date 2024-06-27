@@ -7,6 +7,7 @@ import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 export class DataService {
   private jsonUrl = 'assets/data.json';
   private localStorageKey = 'document';
+  localData:any;
 
   constructor(private http: HttpClient) {}
 
@@ -23,15 +24,15 @@ export class DataService {
     localStorage.setItem(this.localStorageKey, JSON.stringify(document));
   }
 
-  getData(): Observable<any[]> {
+
+
+  fetchData(): Observable<any[]>{
     const localData = localStorage.getItem(this.localStorageKey);
-    if (localData) {
+    if(localData) {
       return of(JSON.parse(localData));
-    }
-    else{
-      return this.http.get<any[]>(this.jsonUrl);
-    }
-    
+  }else{
+    return this.http.get<any[]>(this.jsonUrl)
+  }
   }
 
   private isSelected = new BehaviorSubject<any>(null);

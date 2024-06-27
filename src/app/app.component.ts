@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe((data) => {
+    this.dataService.fetchData().subscribe((data) => {
       this.data = data;
     });
 
@@ -87,8 +87,22 @@ export class AppComponent implements OnInit {
     console.log(this.selectedData);
   }
 
+
+  deletedItem(){
+    const popup = document.querySelector('.deletepopup') as HTMLElement | null;
+    if(popup){
+      popup.style.display ='flex';
+    }
+  }
+
+  confirmAction(){
+    localStorage.removeItem(this.selectedData);
+  }
+
+
+
+
   saveChanges() {
-    console.log('hi');
     if (this.selectedData) {
       const nameInput = document.querySelector(
         '.nameInput',
@@ -141,7 +155,7 @@ export class AppComponent implements OnInit {
       previewAll.style.justifyContent = show ? 'center' : 'initial';
     }
     if (newPreview) {
-      newPreview.style.display = show ? 'flex' : '';
+      newPreview.style.display = show ? '' : '';
       newPreview.style.width = show ? '100%' : '';
       newPreview.style.justifyContent = show ? 'center' : 'initial';
       newPreview.style.marginBottom = show ? '5rem' : '';

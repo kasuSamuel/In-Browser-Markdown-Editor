@@ -3,22 +3,21 @@
     class=" sidebar w-60 h-100vh bg-black p-4 flex-col justify-center items-center transition duration-200 ease-in-out">
     <p class="uppercase mt-2 text-gray-500">my documents</p>
     <div class="flex-col mt-8 h-80vh relative">
-      <button 
+      <button (click)="newDocument()"
         class="flex bg-[#e7492b] w-52 h-10 text-white rounded-md py-3 px-5 justify-center items-center gap-2 hover:bg-[#F39765]">+
         New Document</button>
-      <ul *ngFor="let item of data" >
-        <li class="flex w-52 h-10 items-center  mt-6">
-                  <div>
-                    <img src="../assets/icon-document.svg" alt="document icon">
-                  </div>
-                  <div class="ml-4">
-                    <p class="text-gray-500">{{ item.createdAt }}</p>
-                    <button (click)="viewDocument(item)" class="text-white hover:text-[#E46643]">{{ item.name }}</button>
-                  </div>
-        </li>
-      </ul>
 
-
+  <ul>
+    <li *ngFor="let item of data" class="flex w-52 h-10 items-center mt-6">
+      <div>
+        <img src="../assets/icon-document.svg" alt="document icon">
+      </div>
+      <div class="ml-4">
+        <p class="text-gray-500">{{ item.createdAt }}</p>
+        <button (click)="viewDocument(item)" class="text-white hover:text-[#E46643]">{{ item.name }}</button>
+      </div>
+    </li>
+  </ul>
       <div class="w-44 flex absolute h-12 bottom-0 gap-2 items-center">
         <img class="first" src="../assets/icon-dark-mode.svg" alt="">
         <img class="first-image hidden" src="../assets/icon-moon.svg" alt="">
