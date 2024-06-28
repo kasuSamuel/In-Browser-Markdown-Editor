@@ -63,5 +63,10 @@ export class MenuComponent implements OnInit {
   onThem() {
     this.dataService.toggleDarkMode();
     localStorage.setItem('isDark', this.isDark.toString());
+      if (this.isDark) {
+        document.body.style.backgroundColor = 'black'; 
+      } else {
+        document.body.style.backgroundColor = ''; 
+      }
   }
 }

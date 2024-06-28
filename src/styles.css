@@ -75,13 +75,12 @@ body.dark-mode {
 }
 
 textarea::-webkit-scrollbar,
-.markdown::-webkit-scrollbar {
+.markdown::-webkit-scrollbar,
+.ulscroll::-webkit-scrollbar {
   display: none;
 }
 
-.ulscroll::-webkit-scrollbar {
-    display: none; 
-}
+
 
 .textarea,
 .preview {
@@ -123,4 +122,6 @@ input[type="checkbox"]:checked + .button::before {
   transform: translateX(-1.5rem);
 }
 
-
+.prose{
+  height: 100%;
+}

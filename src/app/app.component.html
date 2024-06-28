@@ -64,7 +64,7 @@
       </div>
       <div class="div-out border-r h-full border-[#979797] hidden md:flex"></div>
 
-      <div class="preview-all w-full h-full hidden md:flex md:w-1/2">
+      <div class="preview-all eye-now w-full h-full hidden md:flex md:w-1/2">
         <div class=" px-4 w-full h-10 flex  justify-between items-center ">
           <p class="uppercase tracking-wide font-light text-[#7C8187] text-1xl">Preview</p>
           <button (click)="togglePreview(true)" class="show-preview pr-7" aria-label="Show Preview">
@@ -79,29 +79,17 @@
       </div>
     </section>
   </header>
-
-
-
   <main class=" w-full h-90vh fixed top-28  ">
     <div class="w-full h-full flex justify-between ">
-
-
       <div class="w-full div-out h-full px-4 py-4 md:w-1/2" *ngIf="selectedData">
         <textarea [(ngModel)]="selectedData.content"
           class="dark:text-gray-400 textarea w-full h-full bg-transparent outline-none text-[#151619] pb-14 text-sm resize-none font-roboto-mono text-custom-14 leading-custom-24 "
           placeholder="Start typing your markdown..."></textarea>
       </div>
-
-
-
       <div class="div-out border-r h-full border-[#979797] hidden md:flex"></div>
-
-
-
-
-      <div class=" preview-all new-preview markdown textarea w-1/2 mkd   px-4 py-4 hidden md:flex"
-        *ngIf="selectedData">
-        <markdown class="preview-all-two prose text-[#7C8187] font-sans  w-full pb-20 overflow-wrap "
+      <div class=" preview-all new-preview markdown textarea w-1/2 h-100vh mkd px-4  py-4 hidden  md:flex"
+        *ngIf="selectedData" style="overflow-y: auto; margin-bottom: 5rem;">
+        <markdown class=" ulscroll preview-all-two prose text-[#7C8187] font-sans w-full h-full mb-28 overflow-y-auto"
           [data]="selectedData.content"></markdown>
       </div>
     </div>

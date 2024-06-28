@@ -95,49 +95,51 @@ export class AppComponent implements OnInit {
   }
 
   confirmAction() {
-  if (this.selectedData) {
-    const index = this.data.findIndex((doc) => doc === this.selectedData);
+    if (this.selectedData) {
+      const index = this.data.findIndex((doc) => doc === this.selectedData);
 
-    if (index !== -1) {
-      this.data.splice(index, 1); // Remove the selected file
+      if (index !== -1) {
+        this.data.splice(index, 1); // Remove the selected file
 
-      if (this.data.length > 0) {
-        // Update selectedData to the latest or next file
-        this.selectedData = this.data[Math.min(index, this.data.length - 1)];
-      } else {
-        this.selectedData = null;
+        if (this.data.length > 0) {
+          // Update selectedData to the latest or next file
+          this.selectedData = this.data[Math.min(index, this.data.length - 1)];
+        } else {
+          this.selectedData = null;
+        }
+
+        this.dataService.saveToLocalStorage(this.data); // Save the updated data to local storage
       }
-
-      this.dataService.saveToLocalStorage(this.data); // Save the updated data to local storage
+      // Optionally, hide the popup or perform any other UI updates
+      const popup = document.querySelector(
+        '.deletepopup',
+      ) as HTMLElement | null;
+      if (popup) {
+        popup.style.display = 'none';
+      }
+      location.reload();
     }
-
-          const popup = document.querySelector(
-            '.deletepopup',
-          ) as HTMLElement | null;
-          if (popup) {
-            popup.style.display = 'none';
-          }
-
-
-              setTimeout(() => {
-                location.reload();
-              }, 2000); 
-  }  
-}
+  }
 
   saveChanges() {
     if (this.selectedData) {
       const nameInput = document.querySelector(
         '.nameInput',
       ) as HTMLInputElement;
+      const content = document.querySelector(
+        'textarea',
+      ) as HTMLTextAreaElement;
       const index = this.data.findIndex((doc) => doc === this.selectedData);
 
       if (index !== -1) {
+        // Update existing document
         this.data[index].content = this.selectedData.content;
-        if (nameInput.value) {
-          this.data[index].name = this.selectedData.name = nameInput.value;
+        if (nameInput.value.trim()) {
+          this.data[index].name = this.selectedData.name = nameInput.value.trim();
+          this.data[index].content = this.selectedData.content = content.value.trim();
         }
       } else {
+        // Create new document
         const defaultFileName = 'Untitled-Document.md';
         const newName = nameInput.value.trim();
         const newFile = {
@@ -147,11 +149,15 @@ export class AppComponent implements OnInit {
         };
         this.data.push(newFile);
       }
+
+      // Save data to local storage
       this.dataService.saveToLocalStorage(this.data);
+
+      // Reload the page
+      location.reload();
     }
   }
 
-  
   formatDate(date: Date): string {
     const year = date.getFullYear().toString();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -176,6 +182,9 @@ export class AppComponent implements OnInit {
     ) as HTMLElement | null;
     const newPreview = document.querySelector(
       '.new-preview',
+    ) as HTMLElement | null;
+    const eyeNow = document.querySelector(
+      '.eye-now',
     ) as HTMLElement | null;
 
     // Loop through all divOut elements and toggle the 'hidden' class
@@ -202,7 +211,7 @@ export class AppComponent implements OnInit {
 
     if (previewAllTwo) {
       previewAllTwo.style.width = show ? '70%' : 'initial';
-      previewAllTwo.style.marginBottom = show ? '5rem' : '';
+      previewAllTwo.style.marginBottom = show ? '7rem' : '';
     }
 
     // Toggle 'hidden' class on showPreview and hidePreview elements
@@ -212,6 +221,9 @@ export class AppComponent implements OnInit {
 
     if (hidePreview) {
       hidePreview.classList.toggle('hidden', !show);
+    }
+    if (eyeNow) {
+      eyeNow.classList.toggle('hidden', !show);
     }
   }
 }
