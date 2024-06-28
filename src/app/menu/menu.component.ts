@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.fetchData().subscribe((data) => {
       this.data = data;
-            this.nextId = data.length
+      this.nextId = data.length
         ? Math.max(...data.map((doc) => doc.id)) + 1
         : 1;
     });
@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
       this.selectedData = doc;
       console.log(this.selectedData);
     });
-
 
     this.dataService.isDarkMode$.subscribe((isDark) => {
       this.isDark = isDark;
@@ -39,21 +38,28 @@ export class MenuComponent implements OnInit {
     this.dataService.setSelected(document);
   }
 
+  formatDate(date: Date): string {
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+
+    return `${day}-${month}-${year}`;
+  }
 
   newDocument(): void {
     const newDoc = {
       id: this.nextId,
       name: `untitled-document.md`,
-      createdAt: new Date().toLocaleDateString(),
-      content: ''
+      createdAt: this.formatDate(new Date()),
+      content: '',
     };
     this.data.push(newDoc);
     this.nextId++;
   }
 
-
-
-
+  get reversedData() {
+    return this.data.slice().reverse();
+  }
   onThem() {
     this.dataService.toggleDarkMode();
     localStorage.setItem('isDark', this.isDark.toString());

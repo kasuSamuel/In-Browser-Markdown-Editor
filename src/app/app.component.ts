@@ -82,25 +82,48 @@ export class AppComponent implements OnInit {
       mainContent.classList.toggle('con-move-up', this.showSidebar);
     }
   }
+
   lastData() {
     this.selectedData = this.data[this.data.length - 1];
-    console.log(this.selectedData);
   }
 
-
-  deletedItem(){
+  deletedItem() {
     const popup = document.querySelector('.deletepopup') as HTMLElement | null;
-    if(popup){
-      popup.style.display ='flex';
+    if (popup) {
+      popup.style.display = 'flex';
     }
   }
 
-  confirmAction(){
-    localStorage.removeItem(this.selectedData);
-  }
+  confirmAction() {
+  if (this.selectedData) {
+    const index = this.data.findIndex((doc) => doc === this.selectedData);
+
+    if (index !== -1) {
+      this.data.splice(index, 1); // Remove the selected file
+
+      if (this.data.length > 0) {
+        // Update selectedData to the latest or next file
+        this.selectedData = this.data[Math.min(index, this.data.length - 1)];
+      } else {
+        this.selectedData = null;
+      }
+
+      this.dataService.saveToLocalStorage(this.data); // Save the updated data to local storage
+    }
+
+          const popup = document.querySelector(
+            '.deletepopup',
+          ) as HTMLElement | null;
+          if (popup) {
+            popup.style.display = 'none';
+          }
 
 
-
+              setTimeout(() => {
+                location.reload();
+              }, 2000); 
+  }  
+}
 
   saveChanges() {
     if (this.selectedData) {
@@ -108,17 +131,33 @@ export class AppComponent implements OnInit {
         '.nameInput',
       ) as HTMLInputElement;
       const index = this.data.findIndex((doc) => doc === this.selectedData);
+
       if (index !== -1) {
         this.data[index].content = this.selectedData.content;
         if (nameInput.value) {
           this.data[index].name = this.selectedData.name = nameInput.value;
         }
-        this.dataService.saveToLocalStorage(this.data);
-        console.log(this.data[index]);
+      } else {
+        const defaultFileName = 'Untitled-Document.md';
+        const newName = nameInput.value.trim();
+        const newFile = {
+          name: newName || defaultFileName,
+          content: this.selectedData.content,
+          createdAt: this.formatDate(new Date()),
+        };
+        this.data.push(newFile);
       }
-      nameInput.value = '';
-      // this.clearSelectedDocument();
+      this.dataService.saveToLocalStorage(this.data);
     }
+  }
+
+  
+  formatDate(date: Date): string {
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+
+    return `${day}-${month}-${year}`;
   }
 
   togglePreview(show: boolean): void {
@@ -155,7 +194,7 @@ export class AppComponent implements OnInit {
       previewAll.style.justifyContent = show ? 'center' : 'initial';
     }
     if (newPreview) {
-      newPreview.style.display = show ? '' : '';
+      newPreview.style.display = show ? 'flex' : '';
       newPreview.style.width = show ? '100%' : '';
       newPreview.style.justifyContent = show ? 'center' : 'initial';
       newPreview.style.marginBottom = show ? '5rem' : '';
